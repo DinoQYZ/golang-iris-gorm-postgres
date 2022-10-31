@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/iris-contrib/middleware/cors"
 	"github.com/joho/godotenv"
 	"github.com/kataras/iris/v12"
 	"gorm.io/gorm"
@@ -52,6 +53,13 @@ func main() {
 
 	app := iris.New()
 
+	crs := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowCredentials: true,
+	})
+
+	app.UseRouter(crs)
+
 	//default data
 	r.firstData()
 
@@ -63,7 +71,7 @@ func main() {
 
 func (r *Repository) SetupRoutes(app *iris.Application) {
 	//default html
-	//app.RegisterView(iris.HTML("./views", ".html"))
+	app.RegisterView(iris.HTML("./views", ".html"))
 
 	//default
 	app.Get("/", defaultGreet)
