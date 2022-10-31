@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/iris-contrib/middleware/cors"
 	"github.com/joho/godotenv"
 	"github.com/kataras/iris/v12"
 	"gorm.io/gorm"
@@ -52,13 +51,6 @@ func main() {
 	}
 
 	app := iris.New()
-
-	crs := cors.New(cors.Options{
-		AllowedOrigins:   []string{"*"},
-		AllowCredentials: true,
-	})
-
-	app.UseRouter(crs)
 
 	//default data
 	r.firstData()

@@ -7,8 +7,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=dino
-      - POSTGRES_PASSWORD=dinopwd
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=dev
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -22,7 +22,6 @@ services:
       - 4000:4000
     depends_on:
       - psql
-    working_dir: /app
     volumes:
       - .:/app
 
