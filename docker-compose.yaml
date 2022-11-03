@@ -7,11 +7,11 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=dev
-      - POSTGRES_PASSWORD=secret
-      - POSTGRES_DB=dev
+      - POSTGRES_USER=dino
+      - POSTGRES_PASSWORD=dinopwd
+      - POSTGRES_DB=dino
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - /postgres_data:/var/lib/postgresql/data
 
   goapp:
     container_name: goapp
@@ -24,6 +24,3 @@ services:
       - psql
     volumes:
       - .:/app
-
-volumes:
-  postgres_data:
